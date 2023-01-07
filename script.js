@@ -111,10 +111,36 @@ function getRandom(arr) {
   return arr[randomIndex];
 }
 
-
+let bigArray = [];
+let generatedPassword = "";
 // Function to generate password with user input
 function generatePassword() {
+   const passwordSelect  = getPasswordOptions();
+
+   if (passwordSelect.lowercase) {
+    bigArray = bigArray.concat(lowerCasedCharacters);
+    
+   }
+   if (passwordSelect.uppercase) {
+    bigArray = bigArray.concat(upperCasedCharacters);
+    
+   }
+   if (passwordSelect.numeric) {
+    bigArray = bigArray.concat(numericCharacters);
+    
+   }
+   if (passwordSelect.special) {
+    bigArray = bigArray.concat(specialCharacters);
+    
+   }
    
+   for (let i = 0; i < parseInt(passwordSelect.length); i++) {
+    generatedPassword += getRandom(bigArray);
+    
+   }
+   console.log(generatedPassword);
+
+   return generatedPassword;
 
 }
 
